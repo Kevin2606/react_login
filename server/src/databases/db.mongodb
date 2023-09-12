@@ -1,0 +1,125 @@
+
+use("crud_react");
+db.createCollection("users", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["username", "email", "password"],
+      properties: {
+        username: {
+          bsonType: "string",
+          pattern: "^[a-zA-Z0-9 ]+$",
+          maxLength: 20,
+          description: "username is required",
+        },
+        email: {
+          bsonType: "string",
+          description: "email is required",
+        },
+        password: {
+          bsonType: "string",
+          maxLength: 20,
+          description: "password is required",
+        },
+      },
+    },
+  },
+});
+
+//post collection
+use("crud_react");
+db.createCollection("posts", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["user", "title", "tag"],
+      properties: {
+        user: {
+          bsonType: "object",
+          required: ["userId","username", "email"],
+          properties: {
+            userId:{
+              bsonType:"objectId"
+            },
+            username: {
+              bsonType: "string",
+              description: "username is required",
+            },
+            email: {
+              bsonType: "string",
+              description: "email is required",
+            },
+          },
+        },
+        title: {
+          bsonType: "string",
+          description: "title is required",
+        },
+        content: {
+          bsonType: "string",
+          maxLength: 200,
+          description: "content is required",
+        },
+        tag: {
+          bsonType: "array",
+          description: "at least one tag is required",
+        },
+        date:{
+          bsonType:"date"
+        }
+      },
+    },
+  },
+});
+
+use("crud_react");
+db.users.insertOne({
+  username: "Sevedol",
+  email: "jean@gmail.com",
+  password: "jean123",
+});
+
+use("crud_react");
+db.posts.insertOne({
+  user: {
+    userId: ObjectId("64f875808ced10b451a4aa01"),
+    username: "Sevedol",
+    email: "jean@gmail.com"
+  },
+  title: "Node.js",
+  content: "Node.js es un entorno de desarrollo open source para JavaScript del lado del servidor que simula un navegador mediante un servidor propio.",
+  tag: ["programacion", "backend"],
+  date:new ISODate()
+});
+
+use("crud_react");
+db.users.find();
+// use("crud_react");
+// db.posts.aggregate([
+//   {
+//     $unwind: "$tag",
+//   },
+//   {
+//     $match: {
+//       tag: "backend",
+//     },
+//   },
+//   {
+//     $group: {
+//       _id: "$tag",
+//       count: {
+//         $sum: 1,
+//       },
+//     },
+//   },
+//   {
+//     $project: {
+//       _id: 0,
+//       tag: "$_id",
+//       count: 1,
+//     },
+//   },
+// ]);
+
+// use("crud_react");
+// db.posts.find();
