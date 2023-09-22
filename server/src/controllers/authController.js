@@ -4,7 +4,6 @@ import * as authServices from "../services/authService.js";
 export const login = async (req, res) => {
   try {
     let data = await authServices.login(req.body);
-
     if (!data.length) {
       res.status(404).json({
         status: 404,

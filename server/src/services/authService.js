@@ -7,7 +7,7 @@ export const login = async (info) => {
   let resultado = await collection
     .find({ email: info.email, password: info.password })
     .toArray();
-
+  console.log(await collection.find().toArray());
   if (!resultado.length) return [];
 
   return [

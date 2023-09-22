@@ -23,7 +23,7 @@ export const SignUp = () => {
 
     try {
       let result = await (
-        await fetch("http://192.168.129.72:5176/auth/signUp", config)
+        await fetch("http://localhost:5176/auth/signUp", config)
       ).json();
 
       if (result.status === 200) {

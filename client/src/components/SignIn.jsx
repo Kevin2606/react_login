@@ -22,7 +22,7 @@ export const SignIn = () => {
 
     try {
       let result = await (
-        await fetch("http://192.168.129.72:5176/auth/login", config)
+        await fetch("http://localhost:5176/auth/login", config)
       ).json();
 
       //IF USER NOT FOUND
