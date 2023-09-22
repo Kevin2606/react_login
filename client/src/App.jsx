@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { SignIn } from "./components/SignIn";
 import { SignUp } from "./components/SignUp";
@@ -6,7 +5,7 @@ import { Home } from "./components/Home";
 
 export default function App() {
   return (
-    <div>
+    <div className="">
       <Router>
         <Routes>
           <Route path="/" element={<SignIn />} />

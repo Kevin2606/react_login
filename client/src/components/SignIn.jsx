@@ -22,7 +22,7 @@ export const SignIn = () => {
 
     try {
       let result = await (
-        await fetch("http://127.25.25.27:3300/auth/login", config)
+        await fetch("http://192.168.129.72:5176/auth/login", config)
       ).json();
 
       //IF USER NOT FOUND
@@ -46,20 +46,18 @@ export const SignIn = () => {
   };
 
   return (
-    <div>
+    <div className="bg-white">
       <form
         onSubmit={Fetch}
         id="formSignIn"
-        className="h-screen flex flex-col justify-center items-center gap-3 p-2"
       >
-        <h1 className="text-center font-bold pt-3">SIGN IN</h1>
+        <h1 >Iniciar sesion</h1>
         <input
           name="email"
           value={email}
           type="email"
           placeholder="Email"
           onChange={(e) => setEmail(e.target.value)}
-          className="sm:w-1/2 md:w-1/2 lg:w-1/4 h-10 bg-gray-100 outline-none border-indigo-700 border-l-4 p-2 text-indigo-700"
         />
         <input
           name="password"
@@ -67,18 +65,16 @@ export const SignIn = () => {
           type="password"
           placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
-          className="sm:w-1/2 md:w-1/2 lg:w-1/4 h-10 bg-gray-100 outline-none border-indigo-700 border-l-4 p-2 text-indigo-700"
         />
-        <div className="grid place-items-center ">
+        <div >
           <input
             type="submit"
-            className="w-40 rounded-none bg-indigo-700 text-white font-bold hover:bg-indigo-200 hover:text-indigo-700  p-2"
+            value={"Ingresar"}
           />
-
-          <p className="mt-5 gap-x-2 text-center text-sm text-gray-500">
-            Not a member?
-            <Link to="/signUp" className="p-2 text-indigo-400 font-bold">
-              Sign Up
+          <p >
+            Sin cuenta?
+            <Link to="/signUp" >
+              Registrate
             </Link>
           </p>
         </div>

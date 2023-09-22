@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom"
+import PropTypes from 'prop-types';
+
 export const Navbar = (props) => {
 
   const handleLogout = () => {
@@ -6,18 +8,23 @@ export const Navbar = (props) => {
   }
 
   return (
-    <div className="navbar bg-zinc-800">
-      <div className="navbar-start">
-        <a href="" className="navbar-item text-indigo-600 font-bold">BLOGS</a>
+    <div >
+      <div>
+        <a href="" >Productos</a>
       </div>
-      <div className="navbar-center">
-        <a className="navbar-item">Home</a>
-        <a className="navbar-item">About</a>
+      <div >
+        <a >Pagina de inicio</a>
+        <a >Acerca de</a>
       </div>
-      <div className="navbar-end">
-        <a className="navbar-item font-bold">{props.username}</a>
-        <Link to="/" onClick={handleLogout} className="navbar-item outline outline-indigo-700 hover:bg-indigo-700">Log out</Link>
+      <div >
+        <a >{props.username}</a>
+        <Link to="/" onClick={handleLogout} >Salir de la cuenta</Link>
       </div>
     </div>
   )
 }
+
+
+Navbar.propTypes = {
+  username: PropTypes.string.isRequired,
+};

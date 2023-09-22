@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 export const SignUp = () => {
@@ -23,7 +23,7 @@ export const SignUp = () => {
 
     try {
       let result = await (
-        await fetch("http://127.25.25.27:3300/auth/signUp", config)
+        await fetch("http://192.168.129.72:5176/auth/signUp", config)
       ).json();
 
       if (result.status === 200) {
@@ -50,7 +50,7 @@ export const SignUp = () => {
       <form
         onSubmit={Fetch}
         className="h-screen flex flex-col justify-center items-center gap-y-4 bg-indigo-700">
-        <h1 className="text-white font-bold pt-3">SIGN UP</h1>
+        <h1 className="text-white font-bold pt-3">Crea una cuenta</h1>
         <input
           type="text"
           value={username}
@@ -79,9 +79,9 @@ export const SignUp = () => {
           />
 
           <p className="mt-5 gap-x-2 text-center text-sm text-gray-200">
-            Already a member?
+            Ya registrado?
             <Link to="/" className="p-2 text-white font-bold">
-              Sign In
+              Inicia sesion
             </Link>
           </p>
         </div>
