@@ -49,6 +49,7 @@ export const signUp = async (req, res) => {
       res.status(409).json({ status: 409, message: "user already exists" });
     }
   } catch (error) {
+    console.log(error);
     res.status(500).send({
       status: 500,
       errorInfo: {

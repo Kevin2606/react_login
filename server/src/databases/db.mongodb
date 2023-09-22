@@ -28,7 +28,7 @@ db.createCollection("users", {
 
 //post collection
 use("crud_react");
-db.createCollection("posts", {
+db.createCollection("productos", {
   validator: {
     $jsonSchema: {
       bsonType: "object",
@@ -74,52 +74,23 @@ db.createCollection("posts", {
 
 use("crud_react");
 db.users.insertOne({
-  username: "Sevedol",
-  email: "jean@gmail.com",
-  password: "jean123",
+  username: "kevin",
+  email: "kevin@gmail.com",
+  password: "kevin123",
 });
 
 use("crud_react");
-db.posts.insertOne({
+db.productos.insertOne({
   user: {
     userId: ObjectId("64f875808ced10b451a4aa01"),
-    username: "Sevedol",
-    email: "jean@gmail.com"
+    username: "kevin",
+    email: "kevin@gmail.com"
   },
-  title: "Node.js",
-  content: "Node.js es un entorno de desarrollo open source para JavaScript del lado del servidor que simula un navegador mediante un servidor propio.",
-  tag: ["programacion", "backend"],
+  title: "Agua embotellada",
+  content: "Agua embotellada de 1 litro",
+  tag: ["Disponible: 300", "Precio: 1000"],
   date:new ISODate()
 });
 
 use("crud_react");
 db.users.find();
-// use("crud_react");
-// db.posts.aggregate([
-//   {
-//     $unwind: "$tag",
-//   },
-//   {
-//     $match: {
-//       tag: "backend",
-//     },
-//   },
-//   {
-//     $group: {
-//       _id: "$tag",
-//       count: {
-//         $sum: 1,
-//       },
-//     },
-//   },
-//   {
-//     $project: {
-//       _id: 0,
-//       tag: "$_id",
-//       count: 1,
-//     },
-//   },
-// ]);
-
-// use("crud_react");
-// db.posts.find();
